@@ -50,5 +50,5 @@ element dequeue(QueueType *q)
 element front(QueueType *q){
 	if (is_empty(q))
 		error("큐가 공백상태입니다");
-	return q->data[q->front];
+	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
