@@ -55,3 +55,7 @@ element front(QueueType *q){
 		error("큐가 공백상태입니다");
 	return q->data[(q->front + 1) % MAX_QUEUE_SIZE];
 }
+
+int size(QueueType *q){
+   return (q->rear - q->front + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
+}

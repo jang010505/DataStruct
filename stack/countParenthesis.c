@@ -49,6 +49,33 @@ element peek(StackType *s){
 		return s->data[(s->top)];
 }
 
-int size(StackType *s){
-	return s->top + 1;
+void count_Parenthesis(char str[]){
+	
+	StackType s;
+	
+	init_stack(&s);
+	
+	int count = 0;
+	
+   for (int i = 0; str[i] != NULL; i++) {
+      if (str[i] == '(') {
+         ++count;
+         push(&s, count);
+         printf("%d ", count);
+      }
+      else if (str[i] == ')') {
+         printf("%d ", pop(&s));
+      }
+ 	}
+}
+int main() {
+   char str[100];
+
+   StackType s;
+
+   printf("¼ö½Ä : ");
+   scanf("%s", str);
+
+   count_Parenthesis(str);
+   return 0;
 }
