@@ -56,3 +56,25 @@ element front(QueueType *q){
 int size(QueueType *q){
    return (q->rear - q->front + MAX_QUEUE_SIZE) % MAX_QUEUE_SIZE;
 }
+
+int FiboQueue(QueueType *q, int n){
+	if(n == 0)
+		return dequeue(q);
+	else{
+		int op1 = dequeue(q);
+		int op2 = front(q);
+		enqueue(q, op1 + op2);
+		return FiboQueue(q, n-1);
+	}
+}
+
+int main(){
+	QueueType q;
+	init_queue(&q);
+	int n;
+	scanf("%d", &n);
+	enqueue(&q, 0);
+	enqueue(&q, 1);
+	printf("%d", FiboQueue(&q, n));
+	return 0;
+}
